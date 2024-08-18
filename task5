@@ -1,0 +1,79 @@
+# Задание 1
+
+# Ввод числа пользователем
+number = int(input("Введите целое число: "))
+
+# Определение знака числа и его четности
+if number > 0:
+    if number % 2 == 0:
+        description = "положительное четное число"
+    else:
+        description = "положительное нечетное число"
+elif number < 0:
+    if number % 2 == 0:
+        description = "отрицательное четное число"
+    else:
+        description = "отрицательное нечетное число"
+else:
+    description = "нулевое число"
+
+# Проверка, является ли число четным
+if number % 2 != 0:
+    print("Число не является четным")
+else:
+    print(description)
+
+# Задание 2
+
+# Получаем слово от пользователя
+word = input("Введите слово из маленьких латинских букв: ")
+
+# Определяем гласные буквы
+vowels = {'a', 'e', 'i', 'o', 'u'}
+vowel_count = 0
+consonant_count = 0
+vowel_counts = {vowel: 0 for vowel in vowels}
+
+# Считаем количество гласных и согласных букв
+for char in word:
+    if char in vowels:
+        vowel_count += 1
+        vowel_counts[char] += 1
+    else:
+        consonant_count += 1
+
+# Определяем, есть ли все гласные буквы
+all_vowels_present = all(vowel_counts[vowel] > 0 for vowel in vowels)
+
+# Выводим результаты
+print(f"Количество гласных букв: {vowel_count}")
+print(f"Количество согласных букв: {consonant_count}")
+
+# Выводим количество каждой гласной буквы
+for vowel, count in vowel_counts.items():
+    print(f"Количество '{vowel}': {count}")
+
+# Выводим, присутствуют ли все гласные буквы
+if all_vowels_present:
+    print("Все гласные буквы присутствуют")
+else:
+    print(False)
+
+# Задание 3
+
+# Ввод данных
+X = int(input("Введите минимальную сумму инвестиций X: "))
+A = int(input("Введите сумму денег у Майкла A: "))
+B = int(input("Введите сумму денег у Ивана B: "))
+
+# Логика проверки
+if A >= X and B >= X:
+    print(2)  # Оба могут вложиться
+elif A >= X:
+    print("Mike")  # Только Майкл может вложиться
+elif B >= X:
+    print("Ivan")  # Только Иван может вложиться
+elif A + B >= X:
+    print(1)  # Вместе могут вложиться
+else:
+    print(0)  # Никто не может вложиться
