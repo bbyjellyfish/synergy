@@ -1,0 +1,20 @@
+# Задание 1
+
+def is_palindrome(s):
+    return s == s[::-1]
+
+input_string = input("Введите строку без пробелов: ")
+if is_palindrome(input_string):
+    print("yes")
+else:
+    print("no")
+
+# Задание 2
+
+def remove_extra_spaces(input_string):
+    # Используем метод split() для деления строки на части
+    # и join() для их объединения с одним пробелом между ними
+    return ' '.join(input_string.split())
+
+result = remove_extra_spaces(input_string)
+print(result)
