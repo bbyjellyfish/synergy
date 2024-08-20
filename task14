@@ -1,0 +1,11 @@
+def print_list_recursively(my_list, index=0):
+    # Базовый случай: если индекс равен длине списка, выводим сообщение
+    if index == len(my_list):
+        print("Конец списка")
+        return
+    
+    # Выводим текущий элемент
+    print(my_list[index])
+    
+    # Рекурсивный вызов функции с увеличенным индексом
+    print_list_recursively(my_list, index + 1)
