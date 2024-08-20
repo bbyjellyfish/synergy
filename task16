@@ -1,0 +1,61 @@
+# Задание 1
+
+class CashRegister:
+    def __init__(self):
+        # Инициализация текущего количества денег в кассе
+        self.balance = 0
+
+    def top_up(self, amount):
+        # Метод для пополнения кассы на заданную сумму
+        self.balance += amount
+
+    def count_1000(self):
+        # Метод для подсчета количества целых тысяч в кассе
+        return self.balance // 1000
+
+    def take_away(self, amount):
+        # Метод для снятия денег из кассы
+        if amount > self.balance:
+            raise ValueError("Недостаточно денег в кассе")
+        self.balance -= amount
+
+# Задание 2
+
+class Turtle:
+    def __init__(self, x=0, y=0, s=1):
+        # Инициализация текущих координат и шага
+        self.x = x
+        self.y = y
+        self.s = s
+
+    def go_up(self):
+        # Метод для перемещения вверх
+        self.y += self.s
+
+    def go_down(self):
+        # Метод для перемещения вниз
+        self.y -= self.s
+
+    def go_left(self):
+        # Метод для перемещения влево
+        self.x -= self.s
+
+    def go_right(self):
+        # Метод для перемещения вправо
+        self.x += self.s
+
+    def evolve(self):
+        # Метод для увеличения шага на 1
+        self.s += 1
+
+    def degrade(self):
+        # Метод для уменьшения шага на 1, с проверкой на отрицательное значение или ноль
+        if self.s - 1 <= 0:
+            raise ValueError("Шаг не может быть меньше или равен нулю")
+        self.s -= 1
+
+    def count_moves(self, x2, y2):
+        # Метод для подсчета минимального количества действий для достижения цели
+        dx = abs(x2 - self.x)
+        dy = abs(y2 - self.y)
+        return (dx // self.s) + (dy // self.s)
