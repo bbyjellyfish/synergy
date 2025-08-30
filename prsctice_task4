@@ -1,0 +1,41 @@
+import random # для генерации случайного числа
+
+
+MIN_NUM = 1
+MAX_NUM = 100
+MAX_TRIES = 7 # разумный лимит попыток
+
+
+def ask_guess(attempt, max_tries):
+"""Читает ввод пользователя и валидирует его."""
+raw = input(f"Попытка {attempt}/{max_tries}. Введите число
+{MIN_NUM}–{MAX_NUM}: ").strip()
+if raw.lower() == "q": return "quit"
+try:
+guess = int(raw)
+if not (MIN_NUM <= guess <= MAX_NUM):
+print(f"Введите целое число в диапазоне {MIN_NUM}–
+{MAX_NUM}.")
+return None return guess
+except ValueError:
+print("Ошибка ввода: нужно целое число.") return None
+
+def play():
+print("Игра «Угадай число». Я загадал число от 1 до 100.
+Введите 'q' для выхода.")
+secret = random.randint(MIN_NUM, MAX_NUM) attempt = 1
+while attempt <= MAX_TRIES:
+guess = ask_guess(attempt, MAX_TRIES) if guess is None:
+# Некорректный ввод не тратит попытку continue
+if guess == "quit":
+print("Вы вышли из игры. До встречи!") return
+# Проверяем догадку if guess < secret:
+print("Слишком маленькое.")
+elif guess > secret:
+print("Слишком большое.") else:
+print(f"Поздравляю, вы угадали число {secret} за {attempt} попыток!")
+return attempt += 1
+print(f"Попытки закончились. Загаданное число было:
+{secret}")
+
+if 		name	== "	main	": play()
